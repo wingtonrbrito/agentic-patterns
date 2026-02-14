@@ -1,0 +1,1 @@
+"""Bookstore data models."""
