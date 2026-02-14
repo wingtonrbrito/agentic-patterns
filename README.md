@@ -135,42 +135,6 @@ Every agent response passes through a four-layer guardrail pipeline before reach
 
 ---
 
-## How to Create a Vertical
-
-A vertical is a domain-specific deployment of AgentOS. Copy `verticals/starter/` and follow this structure:
-
-```
-verticals/
-└── my-vertical/
-    ├── config.py            # Domain config, LLM settings, guardrail thresholds
-    ├── SKILL.md             # Agent skill definition (progressive disclosure)
-    ├── agents/
-    │   └── __init__.py      # Specialist agent setup
-    ├── mcp_servers/
-    │   └── my_server.py     # FastMCP tool definitions
-    ├── models/
-    │   ├── db_models.py     # SQLAlchemy models with TenantMixin
-    │   └── schemas.py       # Pydantic request/response schemas
-    ├── repository.py        # Async data access layer
-    ├── router.py            # FastAPI router with chat endpoint
-    ├── rules.py             # Pure-function business rules
-    ├── renderer.py          # Template-based response rendering
-    └── tests/
-        └── test_vertical.py # Vertical-specific test suite
-```
-
-1. **Define your config** — Set LLM preferences, guardrail thresholds, and tenant namespace.
-2. **Write your SKILL.md** — Define agent capabilities and trigger conditions.
-3. **Build MCP tools** — Implement domain actions as FastMCP tool functions.
-4. **Add models** — Create SQLAlchemy models and Pydantic schemas.
-5. **Write rules** — Implement domain logic as pure functions in `rules.py`.
-6. **Add router** — Create a FastAPI router with CRUD and chat endpoints.
-7. **Test** — Run `pytest verticals/my-vertical/tests/` to validate.
-
-See `verticals/bookstore/` for a complete working example.
-
----
-
 ## Tech Stack
 
 | Layer           | Technology                                    |
